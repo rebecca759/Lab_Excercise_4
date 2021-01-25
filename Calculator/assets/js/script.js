@@ -26,7 +26,7 @@ function sub(firstNum, secondNum) {
 function mult(array) {
     product = 1;
 
-    for (let i = 0; i < array.length; i ++) {
+    for (let i = 0; i < array.length; i++) {
         product = product * Number(array[i]);
     }
 
@@ -44,15 +44,48 @@ function div (firstNum, secondNum) {
     }
 }
 
+function findMin(array) {
+    min_num = Number(array[0]);
+
+    for (let i = 1; i < array.length; i++) {
+        if (Number(array[i]) < min_num) {
+            min_num = Number(array[i]);
+        }
+    }
+
+    return min_num;
+}
+
+function findMax(array) {
+    max_num = Number(array[0]);
+
+    for (let i = 1; i < array.length; i++) {
+        if (Number(array[i]) > max_num) {
+            max_num = Number(array[i]);
+        }
+    }
+
+    return max_num;
+
+}
+
+function findSquare(number) {
+    return number*number;
+}
+
+
 //Immediately Invoking function expression
 (function() {
     service = prompt("Which of the following operations would you like to perform \n"
                     + "1. Addition \n"
                     + "2. Subtraction \n"
                     + "3. Multiplication \n"
-                    + "4. Division");
+                    + "4. Division \n" 
+                    + "5. Find minimum in list\n"
+                    + "6. Find maximum in list \n" 
+                    + "7. Find square of a number");
 
-    if (service == 1 || service == 3) {
+    if (service == 1 || service == 3 || service == 5 || service == 6) {
         let numbers = prompt("How many numbers are you operating on?")
 
         for (let i = 0; i < parseInt(numbers); i++) {
@@ -66,6 +99,15 @@ function div (firstNum, secondNum) {
         else if (service == 3) {
             console.log('Result: ' + mult(numbers_array));
         }
+
+        else if (service == 5) {
+            console.log('Minimum: ' + findMin(numbers_array));
+        }
+
+        else if (service == 6) {
+            console.log('Maximum: ' + findMax(numbers_array));
+        }
+
     }
 
     else if (service == 2) {
@@ -80,6 +122,11 @@ function div (firstNum, secondNum) {
         secondNum = prompt("Enter second number: ");
 
         console.log('Result: ' + div(firstNum,secondNum));
+    }
+
+    else if (service == 7) {
+        number = prompt("Enter number you want to find square of: ");
+        console.log('Result: ' + findSquare(number));
     }
 
     else {
