@@ -1,4 +1,13 @@
+//Declaration
+//storing users options on type of operation
 let service;
+
+//array for numbers input for addition/multiplication
+let numbers_array = new Array();
+
+//numbers input for subtraction/division
+let firstNum;
+let secondNum;
 
 function add(array) {
     summ = 0
@@ -15,11 +24,13 @@ function sub(firstNum, secondNum) {
 }
 
 function mult(array) {
-    product = 0;
+    product = 1;
 
     for (let i = 0; i < array.length; i ++) {
         product = product * Number(array[i]);
     }
+
+    return product;
 
 }
 
@@ -33,6 +44,7 @@ function div (firstNum, secondNum) {
     }
 }
 
+//Immediately Invoking function expression
 (function() {
     service = prompt("Which of the following operations would you like to perform \n"
                     + "1. Addition \n"
@@ -40,25 +52,20 @@ function div (firstNum, secondNum) {
                     + "3. Multiplication \n"
                     + "4. Division");
 
-    let firstNum;
-    let secondNum;
-
     if (service == 1 || service == 3) {
         let numbers = prompt("How many numbers are you operating on?")
-        let numbers_array = new Array();
 
         for (let i = 0; i < parseInt(numbers); i++) {
             numbers_array[i] = prompt("Enter number " + (i+1) + ": ");
         }
 
-
         if (service == 1) {
             console.log('Result: ' + add(numbers_array));
         }
         
-        // else if (service == 3) {
-        //     console.log('Result: ' + mult(firstNum, secondNum));
-        // }
+        else if (service == 3) {
+            console.log('Result: ' + mult(numbers_array));
+        }
     }
 
     else if (service == 2) {
